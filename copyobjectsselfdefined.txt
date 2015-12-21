@@ -1,0 +1,19 @@
+自定义的对象直接调用copy函数是错误的
+e.g：
+Person *p = [[Person alloc]init];
+Person *q = [p copy];//This is wrong used!
+
+自定义类copy时，要自己实现NSCoping 或NSMutableCoping协议，即让自定义的类继承相关协议，并在类的实现中实现相关函数
+
+e.g：
+1.person.h中
+
+Person:NSObject<NSCoping>
+
+2.person.m中
+
+-(id)copyWithZone:(NSZone*)zone{
+	Person *p = [[Person initWithZone:zone]init];
+	return p;
+}
+以上方法完成了协议的重写，是自定义类型中copy时必不可少的过程。
