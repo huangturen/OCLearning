@@ -1,2 +1,12 @@
 属性列表plist保存数据适用于NS-内置类型，writetofile和xxxWithContentOfFile来读写，特点是顺序读取内容。
+
 也可以使用NSKeyedArchiver 和 NSKeyedUnarchiver,特点是随机读取内容。
+
+自定义类型：实现NSCoding协议,否则如果存储对象本身或者对象作为内置类型的元素都无法写入。
+
+实现两个函数
+-(void)encodeWithCoder:(NSCoder *)aCoder
+-(id)initWithCoder:(NSCoder*)aDecoder;
+
+利用归档实现对象的深复制----貌似效率低啊！
+错！！！！不保存到文件，只是将对象打包再解包，如果基础对象中的元素对象过多，效率会提升。
