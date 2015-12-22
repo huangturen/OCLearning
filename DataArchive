@@ -1,0 +1,2 @@
+属性列表plist保存数据适用于NS-内置类型，writetofile和xxxWithContentOfFile来读写，特点是顺序读取内容。
+也可以使用NSKeyedArchiver 和 NSKeyedUnarchiver,特点是随机读取内容。
