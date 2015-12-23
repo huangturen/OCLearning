@@ -1,3 +1,5 @@
+1.NSPredicte的基本用法
+
 NSPredicate 可以定义一个“条件算子”
 
 容器中存在相关的方法利用条件算子进行过滤
@@ -7,3 +9,22 @@ NSPredicate 设置时可以采用键值对进行设置
 如@“%K=%d && %K = %@”，@“age”，20，@“name”，@“kite”
 
 表示设置的条件为age = 20并且name = kite
+
+2.常见的运算符
+
+>= <= != 等等
+
+2.1 数组运算符
+BETWEEN 构造闭区间 “age BETWEEN {20，30}”
+
+构造区间数组，这里不能直接使用整形等基本类型创建数组，需要借助NSNumber进行类型转换。
+NSArray = @[[NSNumber initWithInt:20],[NSNumber initWithInt:30]];
+
+@“SELF == %@”，@“tom”这里SELF表示容器中的常见对象类型。
+
+字符串运算符
+BEGINSWith：以xx开头的字符串
+ENDSWITH：以xx结束的字符串
+CONTAINS：包含
+LIKE 像xx 可以用？代替一位未知，用*代替任意多位未知
+
