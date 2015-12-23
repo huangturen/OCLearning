@@ -16,12 +16,12 @@ NSPredicate 设置时可以采用键值对进行设置
 
 2.1 数组运算符
 BETWEEN 构造闭区间 “age BETWEEN {20，30}”
-
+2.2
 构造区间数组，这里不能直接使用整形等基本类型创建数组，需要借助NSNumber进行类型转换。
 NSArray = @[[NSNumber initWithInt:20],[NSNumber initWithInt:30]];
-
+2.3
 @“SELF == %@”，@“tom”这里SELF表示容器中的常见对象类型。
-
+2.4
 字符串运算符
 BEGINSWith：以xx开头的字符串
 ENDSWITH：以xx结束的字符串
