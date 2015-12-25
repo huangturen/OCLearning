@@ -1,0 +1,11 @@
+1. Block 是C语言函数的扩展，或成为匿名函数
+形式：return type(^blockname)(list of arguments) = ^(list of argument){body}
+
+调用时和正常函数一样blockname(list of arguments)
+
+2.直接使用Block
+
+类似于Python中的lamda函数，主要在网络请求、异步操作中使用。
+
+
+
