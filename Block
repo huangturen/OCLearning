@@ -7,5 +7,53 @@
 
 类似于Python中的lamda函数，主要在网络请求、异步操作中使用。
 
+3.类型定义
+typedef void (^MyBlock)(list of arguments)
 
+MyBlock b = ^(list of arguments){body;};
 
+4.变量在代码块中的作用域
+
+4.1 局部变量在block中使用的时候，其作用相当于const类型，即block在使用了局部变量后不会再改变。而全局变量则是可以改变的。
+
+e.g-1:
+	int a = 100,b = 100;
+        int (^SumBlock)(void) = ^(void){return a+b;};
+        int x = SumBlock();
+        NSLog(@"x=%d",x);
+        a = 200,b = 400;
+        NSLog(@"a = %d,b = %d",a,b);
+        x = SumBlock();
+        a = 200,b = 400;
+        int x2 = SumBlock();
+        NSLog(@"x2 = %d",x2);
+
+此时x,x2的结果都是200
+
+e.g-2:
+	static int a = 100,b = 100;
+        int (^SumBlock)(void) = ^(void){return a+b;};
+        int x = SumBlock();
+        NSLog(@"x=%d",x);
+        a = 200,b = 400;
+        NSLog(@"a = %d,b = %d",a,b);
+        x = SumBlock();
+        a = 200,b = 400;
+        int x2 = SumBlock();
+        NSLog(@"x2 = %d",x2);
+此时结果为600
+
+4.2 参数变量与函数中形参类似
+4.3 __block变量，代表变量在函数体内是可以修改的
+	__block int a = 100,b = 100;
+        int (^SumBlock)(void) = ^(void){return a+b;};
+        int x = SumBlock();
+        NSLog(@"x=%d",x);
+        a = 200,b = 400;
+        NSLog(@"a = %d,b = %d",a,b);
+        x = SumBlock();
+        a = 200,b = 400;
+        int x2 = SumBlock();
+        NSLog(@"x2 = %d",x2); 
+
+总结：局部变量进入block后相当于const类型，去除const属性有两种方法，一种是将变量声明为全局变量，即加static，或者加__block关键字即可通过block修改外部变量。
