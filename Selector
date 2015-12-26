@@ -1,0 +1,12 @@
+Selector:是一个对象中用来选择并执行方法的名字，或者是当源代码编译时用来替换名字的唯一标示
+1.动态绑定的，类似于多态性
+
+2.定义：
+SEL s1 = @selector(method1);
+SEL s2 = NSSelectorFromString(@"method2");
+
+3.实例（运行期决定调用哪个方法）
+[self performSelector:sel]
+
+
+
