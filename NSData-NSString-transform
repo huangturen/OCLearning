@@ -1,0 +1,8 @@
+OS NSString 和NSData 转换
+
+NSString 转换成NSData 对象 
+NSData* xmlData = [@"testdata" dataUsingEncoding:NSUTF8StringEncoding]; 
+
+NSData 转换成NSString对象 
+NSData * data; 
+NSString *result = [[NSString alloc] initWithData:data  encoding:NSUTF8StringEncoding]; 
