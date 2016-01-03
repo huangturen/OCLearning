@@ -1,0 +1,27 @@
+NSFileManager可以读取字符串类型的文件，但是如果是其他类型就不行了
+
+1. 大文件的读取
+NSFileHandle
+
+@property availableData
+
+readDataToEndOfFile
+
+readDataOfLength
+
+2. 创建NSFileHandle
+
+NSString *path = @"/tmp/test.txt";
+        NSFileHandle *readingHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+        NSString* path1 = @"/tmp/test1.txt";
+
+        NSFileHandle *writingHandle = [NSFileHandle fileHandleForWritingAtPath:path1];
+        NSString* path2 = @"/tmp/test2.txt";
+        NSFileHandle *updatingHandle = [NSFileHandle fileHandleForUpdatingAtPath:path2];
+
+3. 读文件
+NSString* path1 = @"/tmp/test1.txt";
+NSFileHandle *writingHandle = [NSFileHandle fileHandleForWritingAtPath:path1
+NSData *data = [@"hello , guo" dataUsingEncoding:NSUTF8StringEncoding];
+[writingHandle writeData:data];
+

@@ -1,0 +1,24 @@
+1.创建目录
+createDirectoryAtPath 
+
+2. 删除目录
+removeDirectoryAtPath: error:
+
+3. 获取当前文件目录：
+属性fm.currentDirectoryPath;
+
+4. 遍历目录：
+contentOfDirectoryAtPath： error：
+
+5. 在桌面创建一个文件夹
+NSFileManager *fm = [NSFileManager defaultManager];
+NSArray *urls = [fm URLsForDirectory:NSDesktopDirectory inDomains:NSUserDomainMask];
+        if (urls.count>0) {
+            NSURL *url = [urls objectAtIndex:0];
+            NSString *str = url.path;
+            str = [str stringByAppendingString:@"/abc"];
+            [fm createDirectoryAtPath:str withIntermediateDirectories:YES attributes:nil error:nil];
+        }
+
+
+

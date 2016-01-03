@@ -1,0 +1,27 @@
+
+1. NSFileManager 实例化
+
+NSFileManager *fm = [NSFilemanager defaultManager]
+
+2. 判断一个文件是否存在
+
+NSString *path = @"/tmp/test.txt"
+BOOL r = [fm fileExistsAtPath:path];
+NSLog(@"%@",r==1?@"YES":@"NO")
+
+3. 获取某一文件夹的路径
+NSArray* paths = [fm URLsForDirectory:NSDesktopDirectory inDomains:NSUserDomainMask];
+        for(NSString* path in paths){
+           NSLog(@"%@",path);
+}
+
+4. 创建文件
+createFileAtPath:(NSString*)path contents:(NSData*)data attributes:(NSDictionary*)attr;
+
+5.removeItemAtPath: error:
+
+6. moveItemAtPath:   toPath:  error:
+不同文件夹下是移动，同一文件夹下是重命名
+
+7. 获取文件属性
+attributesOfItemAtPath: error:
