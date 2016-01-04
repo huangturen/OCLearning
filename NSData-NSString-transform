@@ -6,3 +6,11 @@ NSData* xmlData = [@"testdata" dataUsingEncoding:NSUTF8StringEncoding];
 NSData 转换成NSString对象 
 NSData * data; 
 NSString *result = [[NSString alloc] initWithData:data  encoding:NSUTF8StringEncoding]; 
+
+NSData 转换成char* 
+NSData *data; 
+char *test=[data bytes]; 
+
+char* 转换成NSData对象 
+byte* tempData = malloc(sizeof(byte)*16); 
+NSData *content=[NSData dataWithBytes:tempData length:16];
