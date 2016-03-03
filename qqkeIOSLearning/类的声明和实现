@@ -1,0 +1,13 @@
+类的声明
+@interface 类：super类
+{
+	//数据
+}
+方法
+@end
+
+类的实现
+
+@implementation 类
+方法
+@end
