@@ -18,3 +18,33 @@
 类中的数据赋值的一种方法为：自定义set方法;
 第二种方法为自定义init行为，在这个过程中初始化类的数据成员。
 第三种为自定义一个方法，为所有数据赋值
+
+3.self 关键字表示指向当前对象的指针
+
+4.类的行为方法+（类型）表示类的行为
+
+5.返回数据：行为最好不要带get，因为OC中get有特殊用法，暗指利用指针返回的东西一种快速的访问数据方法：“.”操作符。
+"."操作符实质上是方法的调用，要使用该方法去访问数据，类的方法中必须定义该数据的set方法。
+要想利用“.”操作符，则必须定义与变量同名的方法。如Rectangle类
+
+@interface Rectangle:NSObject
+{
+	int width;
+	int height;
+}
+-(void)setWidth;
+-(void)setHeight;//W,H必须大写，否则不能使用“.”操作符为变量width，height赋值
+-(int)width;
+-(int)height;//必须保证这两个函数与数据变量同名，否则不能使用“.”操作符返回对象中变量的值。
+@end
+上述定义就可以正常使用“.”操作符了。例如：
+Rectangle *rect = [[Rectangle alloc]init];
+rect.width = 200;
+int h = rect.height;
+
+这与C,C++的“.”操作符是不同的。
+p
+r
+rect.width = 
+
+
