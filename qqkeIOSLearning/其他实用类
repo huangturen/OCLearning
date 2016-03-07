@@ -1,0 +1,29 @@
+NSArray等容器中需要存储类的对象，结构实例是不可以直接保存的。
+	CGPoint point = {100,100};
+        CGPoint point2 = {200,200};
+        CGPoint point3 = {300,300};
+        NSArray *array = [NSArray arrayWithObjects:point,point2,point3];
+
+
+此时array处是错误的，为了可以将结构实例保存在容器中，可以借助NSValue类
+	NSValue *v1 = [NSValue valueWithPoint:point];
+        NSValue *v2 = [NSValue valueWithPoint:point2];
+        NSValue *v3 = [NSValue valueWithPoint:point3];
+        NSArray *array = [NSArray arrayWithObjects:v1,v2,v3,nil];
+
+NSNumber 可以实现常见数据类型和数据对象之间的转化:
+
+        NSMutableArray *marray = [NSMutableArray arrayWithCapacity:10];
+        for (int i=0; i<10; ++i) {
+            NSNumber *num = [NSNumber numberWithInt:i];
+            [marray addObject:num];
+        }
+        
+        for (NSNumber *num in marray) {
+            NSLog(@"%d",[num intValue]);
+        }
+
+NSString,NSArray,NSDictionary 都可以直接调用成员函数写到磁盘文件中
+NSSet没有writeToFile成员函数，要保存可以先将其转化为NSArray对象
+
+NSData 以二进制的形式保存数据，存在读写到磁盘的成员函数
