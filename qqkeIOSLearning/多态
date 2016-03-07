@@ -1,0 +1,11 @@
+动态对象的检验
+
+isKindOf 检查某个对象是否是当前类或者父类的一种
+
+isMemberOf 检查某个对象是否是当前类的一种
+
+SEL类型：指向函数的指针
+
+SEL格式： SEL sel=@selector(area);
+
+respondsToSelector 判断某个对象中是否存在SEL指向的函数
