@@ -1,0 +1,7 @@
+NSLog 输出一个对象时，实际上是输出了该对象的description方法返回的内容，可以重写description方法达到改变NSLog输出内容的目的。
+
+继承：is a
+组合：has a
+
+setter以set开头
+getter不以set开头，除非传入指针参数
