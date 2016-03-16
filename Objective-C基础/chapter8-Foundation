@@ -1,0 +1,22 @@
+NSString
+
+1.isEqualToString 判断两个字符串内容是否相同
+2.== 判断两个对象的地址是否相同
+3.compare 逐项前后比较
+
+NSArray
+
+1.只能存储OC的对象，不能存储C语言的基本数据类型（包括struct）和NSArray中的随机指针。
+2.不能存储nil，原因之一是：nil代表列表结束，另一个原因是在循环时无法判断nil到底是结束的标志还是存储的元素。
+
+
+mutable类型的容器，利用capacity初始化时其不是容量的限制。
+如果真的需要在NSArray或者NSDictionary中添加空，则可以使用NSNull，具体操作时调用null方法即可。即[NSNull null]
+
+枚举的方式：
+1.C语法的循环
+2.NSEnumrator
+3.快速枚举for（NSString *string in array）...
+
+@encode()方法，用来生成C结构的描述。
+
