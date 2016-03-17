@@ -1,0 +1,7 @@
+@property的点操作其实是简化了setter方法与getter方法的调用方式而已，不同于C++中的访问成员变量，更不能将其视为等同于public。
+
+@property中的方法：copy表示该属性将被复制，retain表示该属性将被保留，assign表示该属性不希望被保留，readonly表示只读。
+
+attention：readonly表示编译器无法给该属性生成setter方法，这意味着无论何时，使用点操作符对该属性赋值都是不可行的。但是并不意味着该属性就无法赋值，可以通过自定义方法的方式对该属性赋值。
+
+特性不是无能的，多于多参数的setter方法，不能通过property来解决。
