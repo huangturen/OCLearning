@@ -1,0 +1,7 @@
+当使用alloc new copy则必须释放或自动释放对象
+
+retain和release/autorelease 必须成对使用
+
+autorelease是将对象加入了自动释放池，代表在某个时候会发送一次release消息，值得注意的是autorelease调用一次只发送一次release消息，如果对象当前的引用计数>1，则一次autorelease只能在当前引用计数的基础上-1；
+
+arrayWith...之类的函数由于不属于alloc，new，copy，所以不用显示调用release来释放内存。
