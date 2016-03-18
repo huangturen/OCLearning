@@ -5,3 +5,8 @@
 attention：readonly表示编译器无法给该属性生成setter方法，这意味着无论何时，使用点操作符对该属性赋值都是不可行的。但是并不意味着该属性就无法赋值，可以通过自定义方法的方式对该属性赋值。
 
 特性不是无能的，多于多参数的setter方法，不能通过property来解决。
+
+特性的使用规则：
+UI控件用weak
+NSString 用copy
+其他对象一般用strong
