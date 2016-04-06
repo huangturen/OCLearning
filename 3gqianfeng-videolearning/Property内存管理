@@ -1,0 +1,6 @@
+属性内存管理：
+1. assign赋值，不涉及引用计数的变化，弱引用。ARC中对象不能使用assign，但原始类型（bool，int，float）仍然可以使用
+2. copy：拷贝，复制一个对象并创建strong关联，引用计数为1，原来对象计数不变
+3. retain 持有，对原对象计数加1，强引用。ARC中使用strong
+4. weak：赋值，比assign对一个功能，对象释放后把指针置为nil，避免了野指针
+5. strong 持有，等同于retain
