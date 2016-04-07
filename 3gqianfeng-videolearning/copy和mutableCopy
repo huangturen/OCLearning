@@ -1,0 +1,41 @@
+总体来说：copy浅复制（传递指针，不分配内存），mutableCopy深复制
+          copy返回不可变对象，mutableCopy返回可变对象，而与目标对象的声明方式无关
+          e.g：
+          NSMutableString *mString = [string copy];
+          此时mString仍然不可变。
+          
+          
+容器的Copy：copy实现的仍然是浅拷贝
+            mutableCopy实现了容器的深拷贝，但是其内部对象仍然是浅拷贝
+            e.g:
+            NSArray *array = [NSArray arrayWithObjects:[NSMutableString stringWithString:@"first"],@"b",@"c",nil];
+            NSArray *mutableCopyArray = [array mutableCopy];
+            NSLog(@"%p,%p",array,mutableCopyArray);
+            NSLog(@"%p,%p,\n %p,%p",[array objectAtIndex:0],[mutableCopyArray objectAtIndex:0],
+            [array objectAtIndex:1],[mutableCopyArray objectAtIndex:1]);
+            输出为：
+            2016-04-06 21:32:35.070 copyLearning[20899:2341701] 0x100109460,0x100108ee0
+            2016-04-06 21:32:35.071 copyLearning[20899:2341701] 0x100108230,0x100108230,
+             0x100001068,0x100001068
+            要实现深拷贝：
+            一种方法是：
+            NSArray *deepCopyArray=[[NSArray alloc] initWithArray: array copyItems: YES];
+            NSLog(@"%p,%p,\n %p,%p",[array objectAtIndex:0],[deepCopyArray objectAtIndex:0],
+            [array objectAtIndex:1],[deepCopyArray objectAtIndex:1]);
+            这种方法实现了容器的深拷贝和其内可变对象的深拷贝，但是不可变对象仍然是浅拷贝
+            e.g：
+            2016-04-06 21:32:35.071 copyLearning[20899:2341701] 0x100108230,0x747372696655,//可变对象地址不一样
+                                                                0x100001068,0x100001068//不可变地址仍然相同
+
+            第一种方法：
+            NSArray* trueDeepCopyArray = [NSKeyedUnarchiver unarchiveObjectWithData:
+                                      [NSKeyedArchiver archivedDataWithRootObject: array]];
+        
+            NSLog(@"%p,%p,\n %p,%p",[array objectAtIndex:0],[trueDeepCopyArray objectAtIndex:0],
+                  [array objectAtIndex:1],[trueDeepCopyArray objectAtIndex:1]);
+            这种方法实现了完全拷贝：
+            e.g：
+            2016-04-06 21:32:35.072 copyLearning[20899:2341701] 0x100108230,0x1005023d0,
+                                                                0x100001068,0x6215
+          
+    
